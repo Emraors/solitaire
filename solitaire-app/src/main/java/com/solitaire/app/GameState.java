@@ -4,10 +4,13 @@ import com.solitaire.domain.Board;
 import com.solitaire.domain.GameStatus;
 import com.solitaire.domain.Move;
 import com.solitaire.domain.rules.Rules;
+import lombok.extern.log4j.Log4j2;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@Log4j2
 public final class GameState {
 
     private final Rules rules;
@@ -61,12 +64,14 @@ public final class GameState {
     }
 
     private void notifyBoardChanged() {
+        log.debug("Notifying {} listeners of board change", listeners.size());
         for (GameListener l : listeners) {
             l.onBoardChanged(board);
         }
     }
 
     private void notifyStatusChanged() {
+        log.debug("Notifying {} listeners of status change to {}", listeners.size(), status);
         for (GameListener l : listeners) {
             l.onStatusChanged(status);
         }

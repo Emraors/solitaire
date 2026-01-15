@@ -6,21 +6,19 @@ import com.solitaire.domain.Board;
 import com.solitaire.domain.Cell;
 import com.solitaire.domain.rules.EnglishRules;
 import com.solitaire.domain.rules.Rules;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 public final class Main {
 
-    private static final Logger logger = LogManager.getLogger(Main.class);
-
     public static void main(String[] args) throws Exception {
-        logger.info("Starting Solitaire application");
+        log.info("Starting Solitaire application");
 
         Board initial = englishBoard();
         Rules rules = new EnglishRules();
         GameState gameState = new GameState(initial, rules);
 
-        logger.debug("Game initialized with {} pegs", initial.pegCount());
+        log.debug("Game initialized with {} pegs", initial.pegCount());
 
         CommandManager commands = new CommandManager();
 
