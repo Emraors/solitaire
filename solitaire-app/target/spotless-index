@@ -1,0 +1,9 @@
++4o5NbW9RYjOOllgrIVI9pnJLoNTmTpzb7NXFalGTng=
+src/main/java/com/solitaire/app/ApplyMoveCommand.java 2026-01-15T17:45:38.801029137Z
+src/main/java/com/solitaire/app/Command.java 2026-01-15T17:45:38.801029137Z
+src/main/java/com/solitaire/app/CommandManager.java 2026-01-15T17:45:38.801029137Z
+src/main/java/com/solitaire/app/GameListener.java 2026-01-15T17:45:38.801029137Z
+src/main/java/com/solitaire/app/GameState.java 2026-01-15T17:45:38.801029137Z
+src/test/java/com/solitaire/app/ApplyMoveCommandTest.java 2026-01-15T17:45:38.801029137Z
+src/test/java/com/solitaire/app/CommandManagerTest.java 2026-01-15T17:45:38.801029137Z
+src/test/java/com/solitaire/app/GameStateTest.java 2026-01-15T17:45:38.801029137Z

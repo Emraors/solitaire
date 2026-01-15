@@ -14,7 +14,7 @@ public final class Main {
     public static void main(String[] args) throws Exception {
         log.info("Starting Solitaire application");
 
-           DomainObjects domainObjects = DomainFactory.buildDomain();
+        DomainObjects domainObjects = DomainFactory.buildDomain();
         GameState gameState = new GameState(domainObjects.board(), domainObjects.rules());
 
         log.debug("Game initialized with {} pegs", domainObjects.board().pegCount());
