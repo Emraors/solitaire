@@ -2,8 +2,8 @@ package com.solitaire.cli;
 
 import com.solitaire.app.ApplyMoveCommand;
 import com.solitaire.app.CommandManager;
-import com.solitaire.app.GameState;
 import com.solitaire.app.GameListener;
+import com.solitaire.app.GameState;
 import com.solitaire.domain.Board;
 import com.solitaire.domain.GameStatus;
 import com.solitaire.domain.Move;
@@ -33,7 +33,7 @@ public final class CliController implements GameListener {
         onBoardChanged(gameState.board());
         onStatusChanged(gameState.status());
 
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        var in = new BufferedReader(new InputStreamReader(System.in));
 
         while (true) {
             if (needsPrompt) {
@@ -41,7 +41,7 @@ public final class CliController implements GameListener {
                 needsPrompt = false;
             }
 
-            String line = in.readLine();
+            var line = in.readLine();
             if (line == null) return;
 
             line = line.trim();
@@ -66,7 +66,7 @@ public final class CliController implements GameListener {
                 continue;
             }
 
-            Optional<Move> moveOpt = parser.parse(line);
+            var moveOpt = parser.parse(line);
             if (moveOpt.isEmpty()) {
                 System.out.println("Invalid input.");
                 needsPrompt = true;

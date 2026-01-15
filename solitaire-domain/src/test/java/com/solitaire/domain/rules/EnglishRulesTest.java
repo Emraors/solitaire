@@ -28,9 +28,7 @@ final class EnglishRulesTest {
         Board board =
                 new Board(
                         new Cell[][] {
-                            {Cell.PEG},
-                            {Cell.PEG},
-                            {Cell.EMPTY},
+                            {Cell.PEG}, {Cell.PEG}, {Cell.EMPTY},
                         });
 
         Move move = new Move(new Position(0, 0), new Position(1, 0), new Position(2, 0));
@@ -201,4 +199,3 @@ final class EnglishRulesTest {
         assertEquals(GameStatus.RUNNING, status);
     }
 }
-
