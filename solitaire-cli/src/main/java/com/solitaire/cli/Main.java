@@ -1,7 +1,7 @@
 package com.solitaire.cli;
 
 import com.solitaire.app.CommandManager;
-import com.solitaire.app.Game;
+import com.solitaire.app.GameState;
 import com.solitaire.domain.Board;
 import com.solitaire.domain.Cell;
 import com.solitaire.domain.rules.EnglishRules;
@@ -12,11 +12,11 @@ public final class Main {
     public static void main(String[] args) throws Exception {
         Board initial = englishBoard();
         Rules rules = new EnglishRules();
-        Game game = new Game(initial, rules);
+        GameState gameState = new GameState(initial, rules);
 
         CommandManager commands = new CommandManager();
 
-        new CliController(game, commands).run();
+        new CliController(gameState, commands).run();
     }
 
     private static Board englishBoard() {

@@ -6,14 +6,14 @@ import java.util.Objects;
 
 public final class ApplyMoveCommand implements Command {
 
-    private final Game game;
+    private final GameState gameState;
     private final Move move;
 
     private Board before;
     private boolean executed;
 
-    public ApplyMoveCommand(Game game, Move move) {
-        this.game = Objects.requireNonNull(game, "game");
+    public ApplyMoveCommand(GameState gameState, Move move) {
+        this.gameState = Objects.requireNonNull(gameState, "game");
         this.move = Objects.requireNonNull(move, "move");
     }
 
@@ -21,14 +21,14 @@ public final class ApplyMoveCommand implements Command {
     public boolean execute() {
         if (executed) return false;
 
-        if (!game.isLegal(move)) {
+        if (!gameState.isLegal(move)) {
             return false;
         }
 
-        before = game.board();
+        before = gameState.board();
         Board after = before.applyUnchecked(move);
 
-        game.setBoard(after);
+        gameState.setBoard(after);
         executed = true;
         return true;
     }
@@ -36,7 +36,7 @@ public final class ApplyMoveCommand implements Command {
     @Override
     public void undo() {
         if (!executed) return;
-        game.setBoard(before);
+        gameState.setBoard(before);
         executed = false;
     }
 }

@@ -2,7 +2,7 @@ package com.solitaire.cli;
 
 import com.solitaire.app.ApplyMoveCommand;
 import com.solitaire.app.CommandManager;
-import com.solitaire.app.Game;
+import com.solitaire.app.GameState;
 import com.solitaire.app.GameListener;
 import com.solitaire.domain.Board;
 import com.solitaire.domain.GameStatus;
@@ -14,7 +14,7 @@ import java.util.Optional;
 
 public final class CliController implements GameListener {
 
-    private final Game game;
+    private final GameState gameState;
     private final CommandManager commands;
 
     private final AsciiRenderer renderer = new AsciiRenderer();
@@ -22,16 +22,16 @@ public final class CliController implements GameListener {
 
     private boolean needsPrompt = true;
 
-    public CliController(Game game, CommandManager commands) {
-        this.game = game;
+    public CliController(GameState gameState, CommandManager commands) {
+        this.gameState = gameState;
         this.commands = commands;
 
-        this.game.addListener(this);
+        this.gameState.addListener(this);
     }
 
     public void run() throws IOException {
-        onBoardChanged(game.board());
-        onStatusChanged(game.status());
+        onBoardChanged(gameState.board());
+        onStatusChanged(gameState.status());
 
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
@@ -73,7 +73,7 @@ public final class CliController implements GameListener {
                 continue;
             }
 
-            boolean ok = commands.execute(new ApplyMoveCommand(game, moveOpt.get()));
+            boolean ok = commands.execute(new ApplyMoveCommand(gameState, moveOpt.get()));
             if (!ok) {
                 System.out.println("Illegal move.");
                 needsPrompt = true;

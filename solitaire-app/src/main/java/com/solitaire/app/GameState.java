@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public final class Game {
+public final class GameState {
 
     private final Rules rules;
 
@@ -17,7 +17,7 @@ public final class Game {
 
     private final List<GameListener> listeners = new ArrayList<>();
 
-    public Game(Board initialBoard, Rules rules) {
+    public GameState(Board initialBoard, Rules rules) {
         this.board = Objects.requireNonNull(initialBoard, "initialBoard");
         this.rules = Objects.requireNonNull(rules, "rules");
         this.status = rules.status(board);
