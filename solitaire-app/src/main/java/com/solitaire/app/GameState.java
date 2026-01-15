@@ -4,11 +4,10 @@ import com.solitaire.domain.Board;
 import com.solitaire.domain.GameStatus;
 import com.solitaire.domain.Move;
 import com.solitaire.domain.rules.Rules;
-import lombok.extern.log4j.Log4j2;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 public final class GameState {

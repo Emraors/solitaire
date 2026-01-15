@@ -1,10 +1,9 @@
 package com.solitaire.app;
 
-import lombok.extern.log4j.Log4j2;
-
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Objects;
+import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 public final class CommandManager {

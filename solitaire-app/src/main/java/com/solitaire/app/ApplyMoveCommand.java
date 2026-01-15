@@ -2,9 +2,8 @@ package com.solitaire.app;
 
 import com.solitaire.domain.Board;
 import com.solitaire.domain.Move;
-import lombok.extern.log4j.Log4j2;
-
 import java.util.Objects;
+import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 public final class ApplyMoveCommand implements Command {

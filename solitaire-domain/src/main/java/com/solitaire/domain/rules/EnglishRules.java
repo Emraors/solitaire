@@ -57,7 +57,11 @@ public final class EnglishRules implements Rules {
         Position expectedOver = new Position(from.r() + dr / 2, from.c() + dc / 2);
         boolean valid = expectedOver.equals(over);
         if (!valid) {
-            log.debug("Move {} illegal: over position {} doesn't match expected {}", move, over, expectedOver);
+            log.debug(
+                    "Move {} illegal: over position {} doesn't match expected {}",
+                    move,
+                    over,
+                    expectedOver);
         } else {
             log.debug("Move {} is legal", move);
         }

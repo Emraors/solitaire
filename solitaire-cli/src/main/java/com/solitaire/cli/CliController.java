@@ -6,11 +6,9 @@ import com.solitaire.app.GameListener;
 import com.solitaire.app.GameState;
 import com.solitaire.domain.Board;
 import com.solitaire.domain.GameStatus;
-import com.solitaire.domain.Move;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Optional;
 
 public final class CliController implements GameListener {
 
