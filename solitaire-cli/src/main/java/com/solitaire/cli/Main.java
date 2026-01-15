@@ -4,6 +4,8 @@ import com.solitaire.app.CommandManager;
 import com.solitaire.app.GameState;
 import com.solitaire.domain.Board;
 import com.solitaire.domain.Cell;
+import com.solitaire.domain.factory.DomainFactory;
+import com.solitaire.domain.factory.DomainObjects;
 import com.solitaire.domain.rules.EnglishRules;
 import com.solitaire.domain.rules.Rules;
 import lombok.extern.log4j.Log4j2;
@@ -14,11 +16,10 @@ public final class Main {
     public static void main(String[] args) throws Exception {
         log.info("Starting Solitaire application");
 
-        Board initial = englishBoard();
-        Rules rules = new EnglishRules();
-        GameState gameState = new GameState(initial, rules);
+          DomainObjects domainObjects = DomainFactory.buildDomain();
+        GameState gameState = new GameState(domainObjects.board(), domainObjects.rules());
 
-        log.debug("Game initialized with {} pegs", initial.pegCount());
+        log.debug("Game initialized with {} pegs", domainObjects.board().pegCount());
 
         CommandManager commands = new CommandManager();
 
