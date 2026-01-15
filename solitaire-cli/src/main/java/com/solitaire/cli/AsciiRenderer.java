@@ -3,10 +3,17 @@ package com.solitaire.cli;
 import com.solitaire.domain.Board;
 import com.solitaire.domain.Cell;
 import com.solitaire.domain.Position;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 public final class AsciiRenderer {
 
     public String render(Board board) {
+        log.debug(
+                "Rendering board: {}x{} with {} pegs",
+                board.rows(),
+                board.cols(),
+                board.pegCount());
         StringBuilder sb = new StringBuilder();
 
         sb.append("    ");
