@@ -2,7 +2,9 @@ package com.solitaire.domain;
 
 import java.util.Arrays;
 import java.util.Objects;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 public final class Board {
 
     private final int rows;
@@ -23,6 +25,7 @@ public final class Board {
             }
             System.arraycopy(cells[r], 0, this.cells[r], 0, cols);
         }
+        log.debug("Board created: {}x{}, {} pegs", rows, cols, pegCount());
     }
 
     public int rows() {
@@ -45,6 +48,7 @@ public final class Board {
     /** Returns a new board with a single cell changed. (Used by rules/apply-move logic) */
     public Board withCell(Position p, Cell newCell) {
         if (!isInside(p)) throw new IllegalArgumentException("position out of bounds: " + p);
+        log.debug("Creating new board with cell at {} changed to {}", p, newCell);
         Cell[][] copy = deepCopyCells();
         copy[p.r()][p.c()] = newCell;
         return new Board(copy);
@@ -52,6 +56,7 @@ public final class Board {
 
     /** Apply the move without validating legality. Validation is delegated to Rules. */
     public Board applyUnchecked(Move move) {
+        log.debug("Applying move (unchecked): {}", move);
         Cell[][] copy = deepCopyCells();
 
         Position from = move.from();
@@ -62,7 +67,9 @@ public final class Board {
         copy[over.r()][over.c()] = Cell.EMPTY;
         copy[to.r()][to.c()] = Cell.PEG;
 
-        return new Board(copy);
+        Board result = new Board(copy);
+        log.debug("Move applied. Peg count: {} -> {}", pegCount(), result.pegCount());
+        return result;
     }
 
     public int pegCount() {

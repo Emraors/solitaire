@@ -136,14 +136,15 @@ final class EnglishRulesTest {
         Board board =
                 new Board(
                         new Cell[][] {
-                            {Cell.EMPTY, Cell.PEG, Cell.EMPTY},
-                            {Cell.PEG, Cell.PEG, Cell.PEG},
-                            {Cell.EMPTY, Cell.PEG, Cell.EMPTY},
+                            {Cell.EMPTY, Cell.EMPTY, Cell.PEG, Cell.EMPTY, Cell.EMPTY},
+                            {Cell.EMPTY, Cell.EMPTY, Cell.PEG, Cell.EMPTY, Cell.EMPTY},
+                            {Cell.PEG, Cell.PEG, Cell.EMPTY, Cell.PEG, Cell.PEG},
+                            {Cell.EMPTY, Cell.EMPTY, Cell.PEG, Cell.EMPTY, Cell.EMPTY},
+                            {Cell.EMPTY, Cell.EMPTY, Cell.PEG, Cell.EMPTY, Cell.EMPTY},
                         });
 
         List<Move> moves = rules.legalMoves(board);
 
-        // Should have 4 legal moves (one in each direction from center)
         assertEquals(4, moves.size());
     }
 
