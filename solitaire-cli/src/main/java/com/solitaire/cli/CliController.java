@@ -16,16 +16,20 @@ public final class CliController implements GameListener {
 
     private final GameState gameState;
     private final CommandManager commands;
-
-    private final AsciiRenderer renderer = new AsciiRenderer();
-    private final MoveParser parser = new MoveParser();
+    private final AsciiRenderer renderer;
+    private final MoveParser parser;
 
     private boolean needsPrompt = true;
 
-    public CliController(GameState gameState, CommandManager commands) {
+    public CliController(
+            GameState gameState,
+            CommandManager commands,
+            AsciiRenderer renderer,
+            MoveParser parser) {
         this.gameState = gameState;
         this.commands = commands;
-
+        this.renderer = renderer;
+        this.parser = parser;
         this.gameState.addListener(this);
         log.debug("CliController initialized and registered as listener");
     }

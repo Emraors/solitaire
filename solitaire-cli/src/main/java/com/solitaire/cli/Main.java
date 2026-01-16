@@ -1,11 +1,7 @@
 package com.solitaire.cli;
 
-import com.solitaire.app.CommandManager;
-import com.solitaire.app.GameState;
-import com.solitaire.domain.Board;
-import com.solitaire.domain.Cell;
+import com.solitaire.app.factory.ApplicationFactory;
 import com.solitaire.domain.factory.DomainFactory;
-import com.solitaire.domain.factory.DomainObjects;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
@@ -14,38 +10,15 @@ public final class Main {
     public static void main(String[] args) throws Exception {
         log.info("Starting Solitaire application");
 
-        DomainObjects domainObjects = DomainFactory.buildDomain();
-        GameState gameState = new GameState(domainObjects.board(), domainObjects.rules());
+        var domainObjects = DomainFactory.buildDomain();
+        var applicationObjects = ApplicationFactory.buildApplicationObjects(domainObjects);
 
         log.debug("Game initialized with {} pegs", domainObjects.board().pegCount());
-
-        CommandManager commands = new CommandManager();
-
-        new CliController(gameState, commands).run();
-    }
-
-    private static Board englishBoard() {
-        Cell[][] cells = new Cell[7][7];
-
-        for (int r = 0; r < 7; r++) {
-            for (int c = 0; c < 7; c++) {
-                cells[r][c] = isEnglishValidHole(r, c) ? Cell.PEG : Cell.INVALID;
-            }
-        }
-
-        cells[3][3] = Cell.EMPTY;
-
-        return new Board(cells);
-    }
-
-    private static boolean isEnglishValidHole(int r, int c) {
-        boolean top = r <= 1;
-        boolean bottom = r >= 5;
-        boolean left = c <= 1;
-        boolean right = c >= 5;
-
-        // 2x2 corner blocks are invalid
-        boolean inCornerBlock = (top || bottom) && (left || right);
-        return !inCornerBlock;
+        new CliController(
+                        applicationObjects.gameState(),
+                        applicationObjects.manager(),
+                        new AsciiRenderer(),
+                        new MoveParser())
+                .run();
     }
 }

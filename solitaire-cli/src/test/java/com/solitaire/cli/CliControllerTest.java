@@ -58,7 +58,8 @@ final class CliControllerTest {
         // Redirect System.out to capture output
         System.setOut(new PrintStream(outputStream));
 
-        controller = new CliController(gameState, commandManager);
+        controller =
+                new CliController(gameState, commandManager, new AsciiRenderer(), new MoveParser());
     }
 
     @AfterEach
