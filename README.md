@@ -44,3 +44,6 @@ The game starts with a standard English Peg Solitaire board configuration. Pegs 
 *   **Undo**: Enter `u` to undo the last move.
 *   **Redo**: Enter `r` to redo a previously undone move.
 *   **Quit**: Enter `q` to exit the game.
+* 
+* 
+

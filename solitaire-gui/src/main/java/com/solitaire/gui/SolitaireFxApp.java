@@ -6,7 +6,6 @@ import com.solitaire.app.GameState;
 import com.solitaire.app.factory.ApplicationFactory;
 import com.solitaire.domain.Move;
 import com.solitaire.domain.Position;
-import com.solitaire.domain.factory.DomainFactory;
 import com.solitaire.domain.Cell;
 import com.solitaire.domain.GameStatus;
 import javafx.application.Application;
@@ -89,8 +88,7 @@ public final class SolitaireFxApp extends Application {
             gameState.removeListener(listener);
         }
 
-        var domainObjects = DomainFactory.buildDomain();
-        var appObjects = ApplicationFactory.buildApplicationObjects(domainObjects);
+        var appObjects = ApplicationFactory.createEnglishSolitaireGame();
 
         this.gameState = appObjects.gameState();
         this.commandManager = appObjects.manager();

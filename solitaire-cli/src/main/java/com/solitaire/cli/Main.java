@@ -1,7 +1,6 @@
 package com.solitaire.cli;
 
 import com.solitaire.app.factory.ApplicationFactory;
-import com.solitaire.domain.factory.DomainFactory;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
@@ -10,10 +9,9 @@ public final class Main {
     public static void main(String[] args) throws Exception {
         log.info("Starting Solitaire application");
 
-        var domainObjects = DomainFactory.buildDomain();
-        var applicationObjects = ApplicationFactory.buildApplicationObjects(domainObjects);
+        var applicationObjects = ApplicationFactory.createEnglishSolitaireGame();
 
-        log.debug("Game initialized with {} pegs", domainObjects.board().pegCount());
+        log.debug("Game initialized with {} pegs", applicationObjects.gameState().board().pegCount());
         new CliController(
                         applicationObjects.gameState(),
                         applicationObjects.manager(),

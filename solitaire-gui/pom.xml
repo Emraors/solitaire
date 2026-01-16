@@ -23,11 +23,6 @@
             <version>${project.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.solitaire</groupId>
-            <artifactId>solitaire-domain</artifactId>
-            <version>${project.version}</version>
-        </dependency>
 
         <dependency>
             <groupId>org.openjfx</groupId>

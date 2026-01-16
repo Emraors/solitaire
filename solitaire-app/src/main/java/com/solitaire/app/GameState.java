@@ -64,14 +64,14 @@ public final class GameState {
 
     private void notifyBoardChanged() {
         log.debug("Notifying {} listeners of board change", listeners.size());
-        for (GameListener l : listeners) {
+        for (GameListener l : new ArrayList<>(listeners)) {
             l.onBoardChanged(board);
         }
     }
 
     private void notifyStatusChanged() {
         log.debug("Notifying {} listeners of status change to {}", listeners.size(), status);
-        for (GameListener l : listeners) {
+        for (GameListener l : new ArrayList<>(listeners)) {
             l.onStatusChanged(status);
         }
     }
