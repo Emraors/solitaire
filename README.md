@@ -25,6 +25,12 @@ You can run the CLI application directly using Maven from the project root:
 mvn -pl solitaire-cli exec:java -Dexec.mainClass="com.solitaire.cli.Main"
 ```
 
+You can run the JavaFX GUI from the project root:
+
+```bash
+mvn -pl solitaire-gui javafx:run
+```
+
 ## How to Play
 
 The game starts with a standard English Peg Solitaire board configuration. Pegs are represented by `o`, empty holes by `.`.
@@ -38,4 +44,3 @@ The game starts with a standard English Peg Solitaire board configuration. Pegs 
 *   **Undo**: Enter `u` to undo the last move.
 *   **Redo**: Enter `r` to redo a previously undone move.
 *   **Quit**: Enter `q` to exit the game.
-

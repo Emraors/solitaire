@@ -12,6 +12,7 @@
         <module>solitaire-domain</module>
         <module>solitaire-app</module>
         <module>solitaire-cli</module>
+        <module>solitaire-gui</module>
     </modules>
 
     <properties>
