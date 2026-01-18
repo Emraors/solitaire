@@ -52,5 +52,8 @@ jobs:
         if: github.event_name == 'pull_request'
         run: mvn -B spotless:check
 
-      - name: Compile and Test
-        run: mvn -B clean test
+      - name: Install Xvfb (for JavaFX tests)
+        run: sudo apt-get update && sudo apt-get install -y xvfb
+
+      - name: Compile and Test (with virtual display)
+        run: xvfb-run -a mvn -B clean test

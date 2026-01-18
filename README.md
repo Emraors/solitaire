@@ -31,19 +31,4 @@ You can run the JavaFX GUI from the project root:
 mvn -pl solitaire-gui javafx:run
 ```
 
-## How to Play
-
-The game starts with a standard English Peg Solitaire board configuration. Pegs are represented by `o`, empty holes by `.`.
-
-**Goal**: Jump pegs over each other to remove them, leaving only one peg in the center.
-
-### Controls
-
-*   **Move**: Enter coordinates in the format `fromRow fromCol toRow toCol`
-    *   Example: `5 3 3 3` attempts to move the peg at (5,3) to (3,3).
-*   **Undo**: Enter `u` to undo the last move.
-*   **Redo**: Enter `r` to redo a previously undone move.
-*   **Quit**: Enter `q` to exit the game.
-* 
-* 
 
