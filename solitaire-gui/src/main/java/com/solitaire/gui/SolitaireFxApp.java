@@ -4,10 +4,10 @@ import com.solitaire.app.ApplyMoveCommand;
 import com.solitaire.app.CommandManager;
 import com.solitaire.app.GameState;
 import com.solitaire.app.factory.ApplicationFactory;
-import com.solitaire.domain.Move;
-import com.solitaire.domain.Position;
 import com.solitaire.domain.Cell;
 import com.solitaire.domain.GameStatus;
+import com.solitaire.domain.Move;
+import com.solitaire.domain.Position;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -19,7 +19,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-/** JavaFX UI for the solitaire game (minimal but functional). */
 public final class SolitaireFxApp extends Application {
 
     private GameState gameState;
@@ -204,6 +203,5 @@ public final class SolitaireFxApp extends Application {
         }
 
         commandManager.execute(new ApplyMoveCommand(gameState, move));
-        // Board/status update will come via listener.
     }
 }

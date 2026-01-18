@@ -10,8 +10,8 @@ public class ApplicationFactory {
     /**
      * Creates a complete application for English Peg Solitaire.
      *
-     * <p>This method encapsulates the domain creation and is the recommended way for UI modules
-     * to initialize the game. It hides the domain factory dependency from UI layers.
+     * <p>This method encapsulates the domain creation and is the recommended way for UI modules to
+     * initialize the game. It hides the domain factory dependency from UI layers.
      *
      * @return fully initialized ApplicationObjects with game state and command manager
      */

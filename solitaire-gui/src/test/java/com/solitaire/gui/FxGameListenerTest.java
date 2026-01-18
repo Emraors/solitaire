@@ -51,4 +51,3 @@ class FxGameListenerTest {
         assertTrue(statusOnFx.get(), "Status callback did not run on FX thread");
     }
 }
-

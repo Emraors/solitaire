@@ -13,19 +13,19 @@ public final class ApplyMoveCommand implements Command {
     private final Move move;
 
     /**
-     * Tracks whether the command is currently in an executed state (i.e., can be undone).
-     * This flag is set to true when execute() succeeds and false when undo() is called,
-     * allowing the same command instance to be re-executed after being undone (for redo
-     * functionality).
+     * Tracks whether the command is currently in an executed state (i.e., can be undone). This flag
+     * is set to true when execute() succeeds and false when undo() is called, allowing the same
+     * command instance to be re-executed after being undone (for redo functionality).
      */
     private boolean isCurrentlyExecuted;
 
     /**
-     * Lightweight snapshot of the three cells affected by this move, used for undo.
-     * Storing only these three cell states instead of the entire board significantly
-     * reduces memory consumption for long games with extensive undo history.
+     * Lightweight snapshot of the three cells affected by this move, used for undo. Storing only
+     * these three cell states instead of the entire board significantly reduces memory consumption
+     * for long games with extensive undo history.
      */
     private Cell cellAtFrom;
+
     private Cell cellAtOver;
     private Cell cellAtTo;
 
@@ -73,10 +73,11 @@ public final class ApplyMoveCommand implements Command {
 
         // Restore the three affected cells to their previous state
         Board currentBoard = gameState.board();
-        Board restored = currentBoard
-                .withCell(move.from(), cellAtFrom)
-                .withCell(move.over(), cellAtOver)
-                .withCell(move.to(), cellAtTo);
+        Board restored =
+                currentBoard
+                        .withCell(move.from(), cellAtFrom)
+                        .withCell(move.over(), cellAtOver)
+                        .withCell(move.to(), cellAtTo);
 
         gameState.setBoard(restored);
         isCurrentlyExecuted = false;

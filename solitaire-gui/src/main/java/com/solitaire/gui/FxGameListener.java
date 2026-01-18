@@ -30,4 +30,3 @@ final class FxGameListener implements GameListener {
         Platform.runLater(() -> onStatusChanged.accept(status));
     }
 }
-

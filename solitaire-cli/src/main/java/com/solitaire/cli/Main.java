@@ -11,7 +11,8 @@ public final class Main {
 
         var applicationObjects = ApplicationFactory.createEnglishSolitaireGame();
 
-        log.debug("Game initialized with {} pegs", applicationObjects.gameState().board().pegCount());
+        log.debug(
+                "Game initialized with {} pegs", applicationObjects.gameState().board().pegCount());
         new CliController(
                         applicationObjects.gameState(),
                         applicationObjects.manager(),
